@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loading...</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      padding: 50px;
+    }
+    .box {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 650px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #1976d2;
+      color: #fff;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <div class="badge" id="badge"></div>
+    <h1 id="heading"></h1>
+    <p id="message"></p>
+    <ul id="list"></ul>
+    <p><strong>Session ID:</strong> <span id="session"></span></p>
+  </div>
+
+  <script>
+    const pageTitles = [
+      "Random Test Page",
+      "Dynamic QA Playground",
+      "Flaky UI Simulation",
+      "Automation Validation Page",
+      "Content Changes Here"
+    ];
+
+    const headings = [
+      "Welcome!",
+      "Hello Tester 👋",
+      "Dynamic Content Loaded",
+      "This Page Is Random",
+      "Automation In Progress"
+    ];
+
+    const messages = [
+      "Every refresh gives you different content.",
+      "Use this page to test unstable UI scenarios.",
+      "Perfect for retry and wait logic testing.",
+      "Selectors should be resilient here.",
+      "Avoid hard-coded assertions on this page."
+    ];
+
+    const badges = [
+      "ACTIVE",
+      "PENDING",
+      "RUNNING",
+      "COMPLETED",
+      "RANDOM"
+    ];
+
+    const listItems = [
+      "Item Alpha",
+      "Item Beta",
+      "Item Gamma",
+      "Item Delta",
+      "Item Omega"
+    ];
+
+    // Random helpers
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+    // Set random page title
+    document.title = pick(pageTitles);
+
+    // Populate page content
+    document.getElementById("badge").innerText = pick(badges);
+    document.getElementById("heading").innerText = pick(headings);
+    document.getElementById("message").innerText = pick(messages);
+
+    // Random list length
+    const ul = document.getElementById("list");
+    const count = Math.floor(Math.random() * listItems.length) + 1;
+    for (let i = 0; i < count; i++) {
+      const li = document.createElement("li");
+      li.innerText = pick(listItems);
+      ul.appendChild(li);
+    }
+
+    // Random session id
+    document.getElementById("session").innerText =
+      Math.random().toString(36).substring(2, 10);
+  </script>
+
+</body>
+</html>
